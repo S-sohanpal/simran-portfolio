@@ -16,7 +16,7 @@ var HERO=[
 ];
 var P=[
 {n:"Story Bookstore",loc:"Primarc, Kolkata",area:"1,607 sq ft",stage:"Completed",scope:"Turnkey · planning + interiors",
- video:"",
+ Story-walkthrough.mp4:"", Story-walkthrough2.mp4
  youtube:"",
  img:["story-bookstore-1.jpg","story-bookstore-2.jpg"],
  d:"A bookstore built around continuity and flow: an open-concept hall with metal railings, a mirrored ceiling and a “ladder hall” where bookcases become the stairs.",
