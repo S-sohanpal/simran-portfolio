@@ -39,7 +39,7 @@ nav a{text-decoration:none;color:var(--mut);transition:color .2s}nav a:hover{col
 .btn{display:inline-block;padding:14px 26px;border:1px solid var(--ink);font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:.25s;background:none;color:var(--ink);cursor:pointer;font-family:var(--sans)}
 .btn.fill{background:var(--ink);color:var(--bg)}.btn:hover{background:var(--acc);border-color:var(--acc);color:#fff}
 .hero figure{margin:0;position:relative}
-.hero .ss{animation:rise 1.2s ease both}
+.hs{animation:rise 1.2s ease both}
 .hero figcaption{font-size:12px;color:var(--mut);letter-spacing:.1em;margin-top:10px;display:flex;justify-content:space-between}
 @keyframes rise{from{opacity:0;transform:translateY(18px) scale(1.02)}to{opacity:1;transform:none}}
 section{padding:clamp(64px,10vw,130px) 0;border-top:1px solid var(--line)}
@@ -50,7 +50,7 @@ section{padding:clamp(64px,10vw,130px) 0;border-top:1px solid var(--line)}
 .proj:nth-child(even){grid-template-columns:1fr 1.5fr}.proj:nth-child(even) .pimg{order:2}
 @media(max-width:860px){.proj,.proj:nth-child(even){grid-template-columns:1fr}.proj:nth-child(even) .pimg{order:0}}
 .pimg{overflow:hidden;cursor:pointer;background:var(--bg2);position:relative;border:0;padding:0;display:block;width:100%}
-.pimg:hover img{transform:scale(1.035)}
+.pimg:hover .s{transform:scale(1.03)}
 .pimg span{position:absolute;left:14px;bottom:14px;background:var(--bg);color:var(--ink);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px}
 .pnum{font-family:var(--serif);font-size:20px;color:var(--acc)}
 .proj h3{font-size:clamp(30px,3.6vw,46px);margin:8px 0 6px}
@@ -113,12 +113,43 @@ footer{padding:26px 0;font-size:12px;color:var(--mut);letter-spacing:.08em}
 .gal button{overflow:hidden}
 .gal em{position:absolute;left:10px;bottom:10px;background:var(--bg);color:var(--ink);font:500 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:5px 9px}
 .zoom{padding:0;max-width:96vw}.zoom img{max-height:90vh;width:auto;max-width:96vw}
-.ss{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
-.ss img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease,transform .9s}
-.ss img.on{opacity:1}
-.ps{aspect-ratio:4/3}
 .vid{position:relative;aspect-ratio:16/9;background:#000;grid-column:1/-1}
 .vid video,.vid iframe{width:100%;height:100%;border:0;display:block}
+.ss{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bg2)}
+.ss .s{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.ss .s.on{opacity:1;z-index:1}
+.ss .s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ss .s img.bg{filter:blur(26px) brightness(.9);transform:scale(1.2)}
+.ss .s img.pt{object-fit:contain}
+.dots{position:absolute;right:14px;bottom:18px;display:flex;gap:5px;z-index:3}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 3px rgba(0,0,0,.5)}.dots i.on{background:#fff}
+.hs{margin:0;position:relative}
+.hs-stage{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.hs-stage::after{content:"";position:absolute;inset:auto 0 0;height:110px;background:linear-gradient(transparent,rgba(0,0,0,.4));z-index:2;pointer-events:none}
+.hs .sl{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.hs .sl.on{opacity:1;z-index:1}
+.hs .sl img,.hs .sl video{width:100%;height:100%;object-fit:cover;display:block}
+.hs .sl img{transform:scale(1);transition:transform 0s linear 1.3s}
+.hs .sl.on img{transform:scale(1.07);transition:transform 6s linear}
+.hs-bar{position:absolute;left:14px;right:14px;bottom:10px;z-index:3;display:flex;gap:4px}
+.hs-bar button{flex:1;height:18px;background:none;border:0;padding:8px 0;cursor:pointer}
+.hs-bar i{display:block;height:2px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.hs-bar i::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.hs-bar .done i::after{transform:scaleX(1)}
+.hs-bar .run i::after{animation:fill var(--d) linear forwards}
+.hs-bar.paused .run i::after{animation-play-state:paused}
+@keyframes fill{to{transform:scaleX(1)}}
+.car{background:var(--bg2)}
+.car-stage{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bg2)}
+.car-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease}
+.car-stage img.on{opacity:1}
+.car-stage>button{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;z-index:2}
+.cp{left:10px}.cn{right:10px}
+.cc{position:absolute;left:12px;bottom:10px;font-size:11px;letter-spacing:.16em;background:var(--bg);padding:4px 10px;z-index:2}
+.car-th{display:flex;gap:6px;padding:8px;overflow-x:auto}
+.car-th button{flex:0 0 72px;height:54px;padding:0;border:2px solid transparent;opacity:.55;background:none;cursor:pointer;transition:.2s}
+.car-th button.on{border-color:var(--acc);opacity:1}
+.car-th img{width:100%;height:100%;object-fit:cover;display:block}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
@@ -136,7 +167,7 @@ footer{padding:26px 0;font-size:12px;color:var(--mut);letter-spacing:.08em}
   <p class="lead">Five years designing hospitality, commercial and residential interiors, from first concept through to site delivery. Now studying an MBA at Wrexham University and seeking interior design roles in the UK.</p>
   <div class="btns"><a class="btn fill" href="#projects">View Projects</a><a class="btn" href="Simran_Kaur_CV.pdf" download="Simran_Kaur_CV.pdf">Download CV</a></div>
  </div>
- <figure><div class="ss" id="heross"></div><figcaption><span id="hcap"></span><span id="hsub"></span></figcaption></figure>
+ <figure class="hs"><div class="hs-stage" id="hstage"><div class="hs-bar" id="hbar"></div></div><figcaption><span id="hcap"></span><span id="hsub"></span></figcaption></figure>
 </div>
 
 <section id="projects"><div class="wrap">
@@ -201,16 +232,37 @@ footer{padding:26px 0;font-size:12px;color:var(--mut);letter-spacing:.08em}
 <script>
 var $=function(s){return document.querySelector(s)};
 function im(s,alt,ph){return s?'<img loading="lazy" decoding="async" src="'+s+'" alt="'+alt+'">':'<div class="ph">Image placeholder<br>'+ph+'</div>'}
-function slides(a,alt){a=a.filter(Boolean);return a.length?a.map(function(s,k){return '<img'+(k?' loading="lazy"':'')+' decoding="async" src="'+s+'" alt="'+alt+'"'+(k?'':' class="on"')+'>'}).join(""):'<div class="ph">Image placeholder<br>'+alt+'</div>'}
-function ss(box,ms,cb){var m=box.querySelectorAll("img");if(m.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;var k=0,t=null;function go(){m[k].classList.remove("on");k=(k+1)%m.length;m[k].classList.add("on");if(cb)cb(k)}new IntersectionObserver(function(e){if(e[0].isIntersecting){if(!t)t=setInterval(go,ms)}else{clearInterval(t);t=null}}).observe(box)}
+function slides(a,alt){a=a.filter(Boolean);return a.length?a.map(function(s,k){return '<div class="s'+(k?'':' on')+'"><img class="bg" alt="" aria-hidden="true" src="'+s+'"'+(k?' loading="lazy"':'')+'><img class="fg" alt="'+alt+'" src="'+s+'"'+(k?' loading="lazy"':'')+' decoding="async" onload="if(this.naturalHeight>this.naturalWidth*1.05)this.classList.add(\'pt\')"></div>'}).join("")+(a.length>1?'<div class="dots">'+a.map(function(_,k){return '<i'+(k?'':' class="on"')+'></i>'}).join("")+'</div>':""):'<div class="ph">Image placeholder<br>'+alt+'</div>'}
+function ss(box,ms){var m=box.querySelectorAll(".s"),d=box.querySelectorAll(".dots i");if(m.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;var k=0,t=null;function go(){m[k].classList.remove("on");d[k].classList.remove("on");k=(k+1)%m.length;m[k].classList.add("on");d[k].classList.add("on")}new IntersectionObserver(function(e){if(e[0].isIntersecting){if(!t)t=setInterval(go,ms)}else{clearInterval(t);t=null}}).observe(box)}
 function vids(p){var a=[].concat(p.video||[]).filter(Boolean),y=[].concat(p.youtube||[]).filter(Boolean);return a.map(function(v){return '<div class="vid"><video controls playsinline preload="metadata" src="'+v+'"></video></div>'}).join("")+y.map(function(v){return '<div class="vid"><iframe src="https://www.youtube.com/embed/'+v+'?rel=0" title="Project video" loading="lazy" allowfullscreen></iframe></div>'}).join("")}
-if(typeof HERO!="undefined"&&HERO.length){$("#heross").innerHTML=slides(HERO.map(function(x){return x.img}),"Selected project");var hs=document.querySelectorAll("#heross img");HERO.forEach(function(x,k){if(hs[k])hs[k].alt=x.cap});$("#hcap").textContent=HERO[0].cap;$("#hsub").textContent=HERO[0].sub||"";ss($("#heross"),5200,function(k){$("#hcap").textContent=HERO[k].cap;$("#hsub").textContent=HERO[k].sub||""})}
-$("#plist").innerHTML=P.map(function(p,i){return '<article class="proj rv"><button class="pimg" onclick="op('+i+')" aria-label="Open '+p.n+'">'+'<div class="ss ps">'+slides(p.img,p.n)+'</div><span>'+(p.img.filter(Boolean).length)+' images'+(vids(p)?' · video':'')+'</span></button><div><div class="pnum">0'+(i+1)+'</div><h3>'+p.n+'</h3><div class="meta">'+p.loc+' · '+p.stage+'</div><p>'+p.d+'</p><p><b>Role.</b> '+p.role+'</p><p><b>Contribution.</b> '+p.c+'</p><button class="link" onclick="op('+i+')">View details</button></div></article>'}).join("");
+function heroInit(){if(typeof HERO=="undefined"||!HERO.length)return;var st=$("#hstage"),bar=$("#hbar"),sl=[],k=0,tm=null,run=false,rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+HERO.forEach(function(x,i){var d=document.createElement("div");d.className="sl";d.innerHTML=x.video?'<video muted playsinline '+(x.loop?'loop ':'')+'preload="'+(i<2?"auto":"metadata")+'" poster="'+(x.poster||"")+'" aria-label="'+x.cap+'"><source src="'+x.video+'" type="video/mp4"></video>':'<img '+(i?'loading="lazy" ':'')+'decoding="async" src="'+x.img+'" alt="'+x.cap+'">';st.appendChild(d);sl.push(d);var b=document.createElement("button");b.setAttribute("aria-label","Show slide "+(i+1));b.innerHTML="<i></i>";b.onclick=function(){go(i)};bar.appendChild(b)});
+var sg=bar.children;
+function stopAll(){clearTimeout(tm);bar.classList.add("paused");sl.forEach(function(s){var v=s.querySelector("video");if(v)v.pause()})}
+function go(n){clearTimeout(tm);k=n;var x=HERO[n],dur=(x.dur||4.8)*1000;
+sl.forEach(function(s,i){s.classList.toggle("on",i===n);var v=s.querySelector("video");if(v&&i!==n)setTimeout(function(){if(!s.classList.contains("on"))v.pause()},1400)});
+for(var i=0;i<sg.length;i++)sg[i].className=i<n?"done":"";
+$("#hcap").textContent=x.cap;$("#hsub").textContent=x.sub||"";
+var v=sl[n].querySelector("video");if(v&&!rm){try{v.currentTime=0}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){})}
+if(!rm){bar.classList.remove("paused");void sg[n].offsetWidth;sg[n].style.setProperty("--d",dur+"ms");sg[n].className="run"}
+if(run&&!rm)tm=setTimeout(function(){go((n+1)%HERO.length)},dur)}
+go(0);
+new IntersectionObserver(function(e){if(e[0].isIntersecting){run=true;go(k)}else{run=false;stopAll()}},{threshold:.25}).observe(st);
+document.addEventListener("visibilitychange",function(){if(document.hidden){run=false;stopAll()}else{run=true;go(k)}})}
+heroInit();
+var cart=null;
+function carHTML(p){var a=p.img.filter(Boolean);if(!a.length)return '<div class="car"><div class="ph">Add project images</div></div>';return '<div class="car"><div class="car-stage">'+a.map(function(s,k){return '<img src="'+s+'" alt="'+p.n+' — image '+(k+1)+'"'+(k?' loading="lazy"':'')+(k?'':' class="on"')+'>'}).join("")+(a.length>1?'<button class="cp" aria-label="Previous image">‹</button><button class="cn" aria-label="Next image">›</button>':'')+'<div class="cc">1 / '+a.length+'</div></div>'+(a.length>1?'<div class="car-th">'+a.map(function(s,k){return '<button aria-label="Show image '+(k+1)+'"'+(k?'':' class="on"')+'><img src="'+s+'" alt="" loading="lazy"></button>'}).join("")+'</div>':'')+'</div>'}
+function carInit(){clearInterval(cart);var c=document.querySelector(".car-stage");if(!c)return;var m=c.querySelectorAll("img"),t=document.querySelectorAll(".car-th button"),k=0,cc=c.querySelector(".cc");if(m.length<2)return;
+function show(n){m[k].classList.remove("on");if(t[k])t[k].classList.remove("on");k=(n+m.length)%m.length;m[k].classList.add("on");if(t[k]){t[k].classList.add("on");t[k].scrollIntoView({block:"nearest",inline:"center"})}cc.textContent=(k+1)+" / "+m.length}
+function auto(){clearInterval(cart);if(!matchMedia("(prefers-reduced-motion:reduce)").matches)cart=setInterval(function(){show(k+1)},4500)}
+c.querySelector(".cp").onclick=function(){show(k-1);auto()};c.querySelector(".cn").onclick=function(){show(k+1);auto()};
+t.forEach(function(b,i){b.onclick=function(){show(i);auto()}});c.onmouseenter=function(){clearInterval(cart)};c.onmouseleave=auto;auto()}
+$("#plist").innerHTML=P.map(function(p,i){return '<article class="proj rv"><button class="pimg" onclick="op('+i+')" aria-label="Open '+p.n+'">'+'<div class="ss ps">'+slides(p.img,p.n)+'</div><span>'+(p.img.filter(Boolean).length)+' photos</span></button><div><div class="pnum">0'+(i+1)+'</div><h3>'+p.n+'</h3><div class="meta">'+p.loc+' · '+p.stage+'</div><p>'+p.d+'</p><p><b>Role.</b> '+p.role+'</p><p><b>Contribution.</b> '+p.c+'</p><button class="link" onclick="op('+i+')">View details</button></div></article>'}).join("");
 document.querySelectorAll("#plist .ss").forEach(function(b,i){setTimeout(function(){ss(b,4800)},i*500)});
-function op(i){var p=P[i];$("#dlgc").innerHTML='<div class="imgs">'+vids(p)+p.img.map(function(s){return im(s,p.n,"Add project image")}).join("")+'</div><div class="txt"><div class="eyebrow">Project 0'+(i+1)+'</div><h3>'+p.n+'</h3><p style="color:var(--mut);font-size:15px">'+p.d+'</p><dl><dt>Location</dt><dd>'+p.loc+'</dd><dt>Area</dt><dd>'+(p.area||"Add area")+'</dd><dt>Stage</dt><dd>'+p.stage+'</dd><dt>Scope</dt><dd>'+p.scope+'</dd><dt>My role</dt><dd>'+p.role+'</dd></dl><p style="font-size:15px"><b style="font-weight:500">Contribution:</b> '+p.c+'</p></div>';dlg.showModal()}
+function op(i){var p=P[i];$("#dlgc").innerHTML=carHTML(p)+'<div class="txt"><div class="eyebrow">Project 0'+(i+1)+'</div><h3>'+p.n+'</h3><p style="color:var(--mut);font-size:15px">'+p.d+'</p><dl><dt>Location</dt><dd>'+p.loc+'</dd><dt>Area</dt><dd>'+(p.area||"Add area")+'</dd><dt>Stage</dt><dd>'+p.stage+'</dd><dt>Scope</dt><dd>'+p.scope+'</dd><dt>My role</dt><dd>'+p.role+'</dd></dl><p style="font-size:15px"><b style="font-weight:500">Contribution:</b> '+p.c+'</p></div>';dlg.showModal();carInit()}
 $("#prlist").innerHTML=PR.map(function(p,i){return '<article class="prod rv"><div><div class="pnum">0'+(i+1)+'</div><h3>'+p.n+'</h3><p class="brief">'+p.brief+'</p><p class="brief" style="margin-top:-8px"><b style="color:var(--ink);font-weight:500">Role.</b> Product Designer &amp; Stylist, Mangrove Collective LLP</p><div class="spec"><div><small>Stage</small>'+p.stage+'</div><div><small>Scope</small>'+p.scope+'</div><div><small>Materials</small>'+p.mat+'</div></div><ol class="steps">'+p.steps.map(function(s){return '<li><div><b>'+s[0]+'</b>'+s[1]+'</div></li>'}).join("")+'</ol></div><div class="gal">'+vids(p)+p.g.map(function(g){return '<button onclick="zi.src=this.querySelector(\'img\').src;zm.showModal()" aria-label="Enlarge '+g[1]+'"><img loading="lazy" decoding="async" src="'+g[0]+'" alt="'+p.n+' — '+g[1]+'"><em>'+g[1]+'</em></button>'}).join("")+'</div></article>'}).join("");
 zm.addEventListener("click",function(e){if(e.target===zm)zm.close()});
-dlg.addEventListener("close",function(){$("#dlgc").innerHTML=""});
+dlg.addEventListener("close",function(){clearInterval(cart);$("#dlgc").innerHTML=""});
 dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12});
 document.querySelectorAll(".rv").forEach(function(n){io.observe(n)});
