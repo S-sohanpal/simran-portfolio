@@ -9,7 +9,7 @@
  - Keep the commas and quotes exactly as they are */
 var HERO=[
  {img:"hero-vrs-bw.jpg",cap:"VRS Foods Office, New Delhi",sub:"On site"},
- {img:"hero-bookstore-stairs.jpg",cap:"Story Bookstore, Kolkata",sub:"Children’s section"}
+ {img:"hero-bookstore-stairs.jpg",cap:"Story Bookstore, Kolkata",sub:"Children’s section"},
  {video:"hero-story-2.mp4",poster:"hero-story-2.jpg",dur:6.1,cap:"Story Bookstore, Kolkata",sub:"Walkthrough"},
  {img:"hero-bookstore-mirror.jpg",cap:"Story Bookstore, Kolkata",sub:"Turnkey · Completed"},
  {img:"hero-vrs-living.jpg",cap:"VRS Foods Office, New Delhi",sub:"Turnkey"},
@@ -17,8 +17,8 @@ var HERO=[
  {img:"hero-groupdca.jpg",cap:"Office GroupDCA, Jamun Grove",sub:"Planning + interiors"},
  {video:"hero-story-1.mp4",poster:"hero-story-1.jpg",dur:4.2,loop:true,cap:"Story Bookstore, Kolkata",sub:"Walkthrough"},
  {img:"hero-opus.jpg",cap:"The Opus, Dubai",sub:"Turnkey · Completed"},
- {img:"hero-vrs-reception.jpg",cap:"VRS Foods Office, New Delhi",sub:"Reception"},
- ];
+ {img:"hero-vrs-reception.jpg",cap:"VRS Foods Office, New Delhi",sub:"Reception"}
+];
 var P=[
 {n:"Story Bookstore",loc:"Primarc, Kolkata",area:"1,607 sq ft",stage:"Completed",scope:"Turnkey · planning + interiors",
  video:"",
